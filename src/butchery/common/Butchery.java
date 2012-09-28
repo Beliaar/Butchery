@@ -140,7 +140,7 @@ public class Butchery {
 				
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new EventHooks());
-		GameRegistry.registerWorldGenerator(new ButcheryWorldGenerator());
+		GameRegistry.registerWorldGenerator(new WorldGenerator());
 	}
 	
 }

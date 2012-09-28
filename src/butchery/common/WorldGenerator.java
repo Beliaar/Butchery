@@ -7,7 +7,7 @@ import net.minecraft.src.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
 
-public class ButcheryWorldGenerator implements IWorldGenerator {
+public class WorldGenerator implements IWorldGenerator {
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
