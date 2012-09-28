@@ -26,8 +26,7 @@ public class DeadCow extends Item implements IButcherable {
 	}
 
 	@Override
-	public ItemStack getPrimaryOutput()
-	{
+	public ItemStack getPrimaryOutput() {
 		return new ItemStack(Item.leather, 2);
 	}
 	

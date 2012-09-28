@@ -8,20 +8,12 @@
 */
 package butchery.common;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import butchery.api.IButcherable;
-
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.EntityCow;
-import net.minecraft.src.EntityList;
-import net.minecraft.src.EnumCreatureType;
+import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.SpawnListEntry;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import butchery.api.IButcherable;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -30,7 +22,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -54,13 +45,16 @@ public class Butchery {
 	int DeadCowID;
 	int DeadPigID;
 	int DeadSheepID;
-	
+	int LimestoneID;
+	int LimeID;
 	
 	public static Item StoneHuntingKnife;
 	public static Item IronHuntingKnife;
 	public static Item DeadCow;
 	public static Item DeadPig;
 	public static Item DeadSheep;
+	public static Item Limestone;	
+	public static Block Lime;
 
 	@PreInit
 	public void preload(FMLPreInitializationEvent event){
@@ -83,6 +77,9 @@ public class Butchery {
 				"DeadPigID", Configuration.CATEGORY_ITEM, 12003).getInt();
 		DeadSheepID = config.getOrCreateIntProperty(
 				"DeadSheepID", Configuration.CATEGORY_ITEM, 12004).getInt();
+		LimestoneID = config.getOrCreateIntProperty(
+				"LimestoneID", Configuration.CATEGORY_ITEM, 12005).getInt();
+		LimeID = config.getOrCreateBlockIdProperty("LimeID", 2000).getInt();
 		
 		config.save();
 	}
@@ -104,12 +101,23 @@ public class Butchery {
 		DeadSheep = new DeadSheep(DeadSheepID);
 		DeadSheep.setItemName("ButcheryDeadSheep");
 		DeadSheep.setIconIndex(4);
-
+		Limestone = new Limestone(LimestoneID);
+		Limestone.setItemName("Limestone");
+		Limestone.setIconIndex(5);
+		Lime = new Lime(LimeID, 0);
+		Lime.setBlockName("Lime");
+		Lime.setHardness(3.0F).setResistance(5.0F);
+		Lime.setStepSound(Block.soundStoneFootstep);
+		
+		GameRegistry.registerBlock(Lime);
+		
 		LanguageRegistry.addName(StoneHuntingKnife, "Stone Hunting Knife");
 		LanguageRegistry.addName(IronHuntingKnife, "Iron Hunting Knife");
 		LanguageRegistry.addName(DeadCow, "Dead Cow");
 		LanguageRegistry.addName(DeadPig, "Dead Pig");
 		LanguageRegistry.addName(DeadSheep, "Dead Sheep");
+		LanguageRegistry.addName(Limestone, "Limestone");
+		LanguageRegistry.addName(Lime, "Lime");
 		
 		GameRegistry.addRecipe(new ItemStack(StoneHuntingKnife, 1),new Object[]{
 			"F",
@@ -132,6 +140,7 @@ public class Butchery {
 				
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new EventHooks());
+		GameRegistry.registerWorldGenerator(new ButcheryWorldGenerator());
 	}
 	
 }
