@@ -1,0 +1,19 @@
+{
+  "modinfoversion": 2,
+  "modlist" :
+[
+{
+  "modid": "Beliar-Butchery",
+  "name": "Butchery",
+  "description": "This mod changes how leather and meat is acquired.",
+  "version": "0.0.1",
+  "mcversion": "1.3.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "Beliar"
+  ],
+  "credits": "Authored by Beliar"
+}
+]
+}
