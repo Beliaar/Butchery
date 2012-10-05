@@ -8,8 +8,10 @@
 */
 package butchery.client;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import net.minecraftforge.client.MinecraftForgeClient;
 import butchery.common.CommonProxy;
+import butchery.common.TileEntityTub;
 
 public class ClientProxy extends CommonProxy {
 
@@ -17,5 +19,10 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderers(){
 		MinecraftForgeClient.preloadTexture(ITEMS_PNG);
 		MinecraftForgeClient.preloadTexture(BLOCKS_PNG);
+		MinecraftForgeClient.preloadTexture(TubRenderer.TUB_TEXTURE);
+		
+		TubRenderer renderer = new TubRenderer();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTub.class, renderer);
+
 	}
 }

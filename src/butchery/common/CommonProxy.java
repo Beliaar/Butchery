@@ -10,8 +10,8 @@ package butchery.common;
 
 
 public class CommonProxy {
-	public static String ITEMS_PNG = "/butchery/Items.png";
-	public static String BLOCKS_PNG = "/butchery/Blocks.png";	
+	public static String ITEMS_PNG = "/butchery/items.png";
+	public static String BLOCKS_PNG = "/butchery/blocks.png";	
 
 	// Client stuff
 	public void registerRenderers () {
