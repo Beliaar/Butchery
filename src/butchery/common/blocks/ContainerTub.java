@@ -1,4 +1,4 @@
-package butchery.common;
+package butchery.common.blocks;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
@@ -8,6 +8,9 @@ import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Slot;
 import butchery.api.ITubWaterModifier;
+import butchery.common.gui.SlotTubInput;
+import butchery.common.gui.SlotTubModifier;
+import butchery.common.gui.SlotTubOutput;
 
 public class ContainerTub extends Container {
 

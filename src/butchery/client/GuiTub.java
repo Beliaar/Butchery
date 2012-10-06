@@ -2,8 +2,8 @@ package butchery.client;
 
 import org.lwjgl.opengl.GL11;
 
-import butchery.common.ContainerTub;
-import butchery.common.TileEntityTub;
+import butchery.common.blocks.ContainerTub;
+import butchery.common.blocks.TileEntityTub;
 import net.minecraft.src.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.StatCollector;

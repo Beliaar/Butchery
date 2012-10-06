@@ -6,7 +6,7 @@
  * License 1.0, or MMPL. Please check the contents of the license located in
  * https://github.com/Beliaar/Butchery/wiki/License
  */
-package butchery.common;
+package butchery.common.blocks;
 
 import butchery.api.ITubWaterModifier;
 import cpw.mods.fml.common.Side;

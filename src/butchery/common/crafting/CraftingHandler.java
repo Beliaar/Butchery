@@ -6,9 +6,10 @@
  * License 1.0, or MMPL. Please check the contents of the license located in
  * https://github.com/Beliaar/Butchery/wiki/License
  */
-package butchery.common;
+package butchery.common.crafting;
 
 import butchery.api.IButcherable;
+import butchery.common.items.HuntingKnife;
 import net.minecraft.src.AchievementList;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;

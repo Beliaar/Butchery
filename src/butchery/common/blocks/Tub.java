@@ -1,6 +1,8 @@
-package butchery.common;
+package butchery.common.blocks;
 
 import java.util.Random;
+
+import butchery.common.Butchery;
 
 import net.minecraft.src.BlockContainer;
 import net.minecraft.src.CreativeTabs;

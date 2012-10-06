@@ -1,6 +1,8 @@
-package butchery.common;
+package butchery.common.gui;
 
 import butchery.client.GuiTub;
+import butchery.common.blocks.ContainerTub;
+import butchery.common.blocks.TileEntityTub;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;

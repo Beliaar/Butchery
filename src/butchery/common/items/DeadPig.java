@@ -6,16 +6,17 @@
  * License 1.0, or MMPL. Please check the contents of the license located in
  * https://github.com/Beliaar/Butchery/wiki/License
  */
-package butchery.common;
+package butchery.common.items;
 
 import butchery.api.IButcherable;
+import butchery.common.CommonProxy;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 
-public class DeadSheep extends Item implements IButcherable {
+public class DeadPig extends Item implements IButcherable {
 
-	public DeadSheep(int item_id) {
+	public DeadPig(int item_id) {
 		super(item_id);
 		maxStackSize = 64;
 		this.setTabToDisplayOn(CreativeTabs.tabMisc);
@@ -33,7 +34,7 @@ public class DeadSheep extends Item implements IButcherable {
 
 	@Override
 	public ItemStack[] getSecondaryOutputs() {
-		return new ItemStack[] {};
+		return new ItemStack[] { new ItemStack(Item.porkRaw, 2) };
 	}
 
 }

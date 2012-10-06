@@ -12,7 +12,7 @@
 
 package butchery.client;
 
-import butchery.common.TileEntityTub;
+import butchery.common.blocks.TileEntityTub;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.Entity;
 import net.minecraft.src.ModelBase;

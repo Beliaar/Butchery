@@ -11,7 +11,7 @@ package butchery.client;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import net.minecraftforge.client.MinecraftForgeClient;
 import butchery.common.CommonProxy;
-import butchery.common.TileEntityTub;
+import butchery.common.blocks.TileEntityTub;
 
 public class ClientProxy extends CommonProxy {
 

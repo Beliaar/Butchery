@@ -1,6 +1,7 @@
-package butchery.common;
+package butchery.common.items;
 
 import butchery.api.ITubWaterModifier;
+import butchery.common.CommonProxy;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

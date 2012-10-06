@@ -1,4 +1,4 @@
-package butchery.common;
+package butchery.common.gui;
 
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

@@ -6,8 +6,9 @@
  * License 1.0, or MMPL. Please check the contents of the license located in
  * https://github.com/Beliaar/Butchery/wiki/License
  */
-package butchery.common;
+package butchery.common.items;
 
+import butchery.common.CommonProxy;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 

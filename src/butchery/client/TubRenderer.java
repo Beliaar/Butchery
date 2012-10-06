@@ -16,7 +16,7 @@ import net.minecraft.src.TileEntitySpecialRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import butchery.common.TileEntityTub;
+import butchery.common.blocks.TileEntityTub;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 
