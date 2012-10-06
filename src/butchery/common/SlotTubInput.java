@@ -16,7 +16,8 @@ public class SlotTubInput extends Slot {
 		if (modifierStack == null) {
 			return false;
 		}
-		ITubWaterModifier modifierItem = (ITubWaterModifier) modifierStack.getItem();
+		ITubWaterModifier modifierItem = (ITubWaterModifier) modifierStack
+				.getItem();
 		return (modifierItem.getOutput(itemStack) != null);
 	}
 }

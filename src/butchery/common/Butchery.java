@@ -149,10 +149,10 @@ public class Butchery {
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadCow));
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadPig));
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadSheep));
-		
+
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
-		
-		 NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
+
+		NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
 
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new EventHooks());

@@ -22,11 +22,11 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-        TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-        if(tileEntity instanceof TileEntityTub){
-                return new GuiTub(player.inventory, (TileEntityTub) tileEntity);
-        }
-        return null;
+		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+		if (tileEntity instanceof TileEntityTub) {
+			return new GuiTub(player.inventory, (TileEntityTub) tileEntity);
+		}
+		return null;
 	}
 
 }

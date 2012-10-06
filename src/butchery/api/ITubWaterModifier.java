@@ -38,14 +38,16 @@ public interface ITubWaterModifier {
 	 * @return
 	 */
 	public int getMaxAmountTransformed(ItemStack input);
-	
+
 	/**
 	 * Returns the amount of water used to transform the input
-	 * @param input The ItemStack that is in the input slot
+	 * 
+	 * @param input
+	 *            The ItemStack that is in the input slot
 	 * @return The amount of water used to transform the input
 	 */
 	public int getWaterUsage(ItemStack input);
-	
+
 	/**
 	 * Returns the ticks needed to transform an input to the output.
 	 * 

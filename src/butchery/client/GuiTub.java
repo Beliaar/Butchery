@@ -8,6 +8,12 @@ import net.minecraft.src.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.StatCollector;
 
+/**
+ * The Handler for drawing the tub inventory gui
+ * 
+ * @author Beliar
+ * 
+ */
 public class GuiTub extends GuiContainer {
 
 	private TileEntityTub tubEntity;

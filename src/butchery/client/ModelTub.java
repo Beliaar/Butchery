@@ -19,6 +19,12 @@ import net.minecraft.src.ModelBase;
 import net.minecraft.src.ModelRenderer;
 import net.minecraft.src.Tessellator;
 
+/**
+ * The model for the tub
+ * 
+ * @author Beliar
+ * 
+ */
 public class ModelTub extends ModelBase {
 	// fields
 	ModelRenderer Bottom;
@@ -88,8 +94,11 @@ public class ModelTub extends ModelBase {
 		Front.render(scale);
 	}
 
-	public void renderWater(TileEntityTub entity, float scale, double x, double y,
-			double z) {
+	/**
+	 * Render the water based on the water level of the entity
+	 */
+	public void renderWater(TileEntityTub entity, float scale, double x,
+			double y, double z) {
 		if (entity.waterLevel > 0) {
 			Water.setRotationPoint(10F, 5F + (entity.waterLevel / 10), 9F);
 			Water.render(scale);
