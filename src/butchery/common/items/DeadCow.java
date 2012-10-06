@@ -9,6 +9,7 @@
 package butchery.common.items;
 
 import butchery.api.IButcherable;
+import butchery.common.Butchery;
 import butchery.common.CommonProxy;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
@@ -18,8 +19,8 @@ public class DeadCow extends Item implements IButcherable {
 
 	public DeadCow(int item_id) {
 		super(item_id);
-		maxStackSize = 64;
-		this.setTabToDisplayOn(CreativeTabs.tabMisc);
+		this.maxStackSize = 64;
+		setTabToDisplayOn(CreativeTabs.tabMisc);
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class DeadCow extends Item implements IButcherable {
 
 	@Override
 	public ItemStack getPrimaryOutput() {
-		return new ItemStack(Item.leather, 2);
+		return new ItemStack(Butchery.Hide, 2);
 	}
 
 	@Override

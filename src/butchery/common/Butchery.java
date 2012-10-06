@@ -25,6 +25,7 @@ import butchery.common.gui.GuiHandler;
 import butchery.common.items.DeadCow;
 import butchery.common.items.DeadPig;
 import butchery.common.items.DeadSheep;
+import butchery.common.items.Hide;
 import butchery.common.items.HuntingKnife;
 import butchery.common.items.Limestone;
 import cpw.mods.fml.common.Mod;
@@ -60,6 +61,7 @@ public class Butchery {
 	int LimeID;
 	int TubID;
 	int TubItemID;
+	int HideID;
 
 	public static Item StoneHuntingKnife;
 	public static Item IronHuntingKnife;
@@ -68,6 +70,7 @@ public class Butchery {
 	public static Item DeadSheep;
 	public static Item Limestone;
 	public static Item TubItem;
+	public static Item Hide;
 	public static Block Lime;
 	public static Block Tub;
 
@@ -102,6 +105,8 @@ public class Butchery {
 		TubID = config.getOrCreateBlockIdProperty("TubID", 2701).getInt();
 		TubItemID = config.getOrCreateIntProperty("TubItemID",
 				Configuration.CATEGORY_ITEM, 6006).getInt();
+		HideID = config.getOrCreateIntProperty("HideID",
+				Configuration.CATEGORY_ITEM, 6007).getInt();
 		config.save();
 	}
 
@@ -135,9 +140,13 @@ public class Butchery {
 		Tub.setBlockName("Tub");
 		Tub.setHardness(0.5f).setResistance(0.5f);
 		TubItem = new ItemReed(TubItemID, Tub);
-		TubItem.setIconCoord(6, 0).setTabToDisplayOn(CreativeTabs.tabTools);
+		TubItem.setIconIndex(6).setTabToDisplayOn(CreativeTabs.tabTools);
 		TubItem.setItemName("cauldron");
 		TubItem.setTextureFile(CommonProxy.ITEMS_PNG);
+		Hide = new Hide(HideID);
+		Hide.setIconIndex(7);
+		Hide.setItemName("Hide");
+
 		GameRegistry.registerBlock(Lime);
 		GameRegistry.registerBlock(Tub);
 		GameRegistry.registerTileEntity(TileEntityTub.class, "Tub");
@@ -150,12 +159,15 @@ public class Butchery {
 		LanguageRegistry.addName(Limestone, "Limestone");
 		LanguageRegistry.addName(Lime, "Lime");
 		LanguageRegistry.addName(TubItem, "Tub");
+		LanguageRegistry.addName(Hide, "Hide");
 
 		GameRegistry.addRecipe(new ItemStack(StoneHuntingKnife, 1),
 				new Object[] { "F", "S", 'F', Item.flint, 'S', Item.stick });
 		GameRegistry
 				.addRecipe(new ItemStack(IronHuntingKnife, 1), new Object[] {
 						"I", "S", 'I', Item.ingotIron, 'S', Item.stick });
+		GameRegistry.addRecipe(new ItemStack(TubItem, 1), new Object[] { "W W",
+				"W W", "WWW", 'W', Block.planks });
 
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadCow));
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadPig));
