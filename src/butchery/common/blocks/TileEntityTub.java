@@ -264,6 +264,7 @@ public class TileEntityTub extends TileEntity implements IInventory {
 			int ticksNeeded = modifier.getTicksNeeded(this.tubItemStacks[1]);
 			int ticksPassed = ticksNeeded - this.currentSoakTime;
 			this.soakProgress = (float) ticksPassed / (float) ticksNeeded;
+			inventoryChanged = true;
 		}
 
 		if (!this.worldObj.isRemote) {
