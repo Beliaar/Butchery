@@ -1,20 +1,25 @@
+/**
+ * Copyright (c) Beliar, 2012
+ * https://github.com/Beliaar/Butchery
+ *
+ * Butchery is distributed under the terms of the Minecraft Mod Public
+ * License 1.0, or MMPL. Please check the contents of the license located in
+ * https://github.com/Beliaar/Butchery/wiki/License
+ */
 package butchery.common.blocks;
 
 import java.util.Random;
 
-import butchery.common.Butchery;
-
 import net.minecraft.src.BlockContainer;
-import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
+import butchery.common.Butchery;
 
 public class Tub extends BlockContainer {
 
@@ -58,6 +63,9 @@ public class Tub extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, int par2, int par3, int par4,
 			EntityPlayer player, int par6, float par7, float par8, float par9) {
+		if (player.isSneaking()) {
+			return false;
+		}
 		if (!world.isRemote) {
 			ItemStack currentItem = player.inventory.getCurrentItem();
 

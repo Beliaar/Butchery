@@ -8,9 +8,6 @@
  */
 package butchery.common.blocks;
 
-import butchery.api.ITubWaterModifier;
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.IInventory;
@@ -22,12 +19,16 @@ import net.minecraft.src.NetworkManager;
 import net.minecraft.src.Packet;
 import net.minecraft.src.Packet132TileEntityData;
 import net.minecraft.src.TileEntity;
-import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
-import net.minecraft.src.WorldClient;
 import net.minecraft.src.WorldServer;
+import butchery.api.TubRecipe;
+import butchery.api.TubRecipeManager;
+import cpw.mods.fml.common.Side;
+import cpw.mods.fml.common.asm.SideOnly;
 
 public class TileEntityTub extends TileEntity implements IInventory {
+
+	private TubRecipe currentRecipe = null;
 
 	public int waterLevel = 0;
 	public float soakProgress = 0.0F;
@@ -256,23 +257,26 @@ public class TileEntityTub extends TileEntity implements IInventory {
 		if (!canSoak()) {
 			this.currentSoakTime = 0;
 			this.soakProgress = 0;
+			currentRecipe = null;
 		}
 		if (this.currentSoakTime > 0) {
-			--this.currentSoakTime;
-			ITubWaterModifier modifier;
-			modifier = (ITubWaterModifier) this.tubItemStacks[0].getItem();
-			int ticksNeeded = modifier.getTicksNeeded(this.tubItemStacks[1]);
-			int ticksPassed = ticksNeeded - this.currentSoakTime;
-			this.soakProgress = (float) ticksPassed / (float) ticksNeeded;
-			inventoryChanged = true;
+			if (currentRecipe == null) {
+				this.currentSoakTime = 0;
+			} else {
+				--this.currentSoakTime;
+				int ticksNeeded = currentRecipe.ticksNeeded;
+				int ticksPassed = ticksNeeded - this.currentSoakTime;
+				this.soakProgress = (float) ticksPassed / (float) ticksNeeded;
+				inventoryChanged = true;
+			}
 		}
 
 		if (!this.worldObj.isRemote) {
 			if (this.currentSoakTime == 0 && canSoak()) {
-				ITubWaterModifier modifier;
-				modifier = (ITubWaterModifier) this.tubItemStacks[0].getItem();
-				this.currentSoakTime = modifier
-						.getTicksNeeded(this.tubItemStacks[1]);
+				this.currentRecipe = TubRecipeManager.getInstance().getRecipe(
+						this.tubItemStacks[0].getItem(),
+						this.tubItemStacks[1].getItem());
+				this.currentSoakTime = this.currentRecipe.ticksNeeded;
 				this.soakProgress = 0.0F;
 				inventoryChanged = true;
 			}
@@ -301,13 +305,14 @@ public class TileEntityTub extends TileEntity implements IInventory {
 		if (this.tubItemStacks[1] == null) {
 			return false;
 		}
-		if (this.tubItemStacks[0].getItem() instanceof ITubWaterModifier) {
-			ITubWaterModifier modifier;
-			modifier = (ITubWaterModifier) this.tubItemStacks[0].getItem();
-			if (this.waterLevel < modifier.getWaterUsage(this.tubItemStacks[1])) {
+		TubRecipe recipe = TubRecipeManager.getInstance().getRecipe(
+				this.tubItemStacks[0].getItem(),
+				this.tubItemStacks[1].getItem());
+		if (recipe != null) {
+			if (this.waterLevel < recipe.waterUsage) {
 				return false;
 			}
-			ItemStack output = modifier.getOutput(this.tubItemStacks[1]);
+			ItemStack output = recipe.output;
 			if (output == null) {
 				return false;
 			}
@@ -328,16 +333,14 @@ public class TileEntityTub extends TileEntity implements IInventory {
 	 * Transform items from the input stack into the output items
 	 */
 	public void soakItem() {
-		if (canSoak()) {
-			ITubWaterModifier modifier;
-			modifier = (ITubWaterModifier) this.tubItemStacks[0].getItem();
-			ItemStack output = modifier.getOutput(this.tubItemStacks[1]);
+		if (canSoak() && this.currentRecipe != null) {
+			ItemStack output = currentRecipe.output;
 			if (this.tubItemStacks[2] == null) {
 				this.tubItemStacks[2] = output.copy();
 			} else if (this.tubItemStacks[2].isItemEqual(output)) {
 				this.tubItemStacks[2].stackSize += output.stackSize;
 			}
-			this.waterLevel -= modifier.getWaterUsage(this.tubItemStacks[1]);
+			this.waterLevel -= this.currentRecipe.waterUsage;
 			--this.tubItemStacks[0].stackSize;
 			if (this.tubItemStacks[0].stackSize <= 0) {
 				this.tubItemStacks[0] = null;
@@ -346,6 +349,7 @@ public class TileEntityTub extends TileEntity implements IInventory {
 			if (this.tubItemStacks[1].stackSize <= 0) {
 				this.tubItemStacks[1] = null;
 			}
+			this.currentRecipe = null;
 		}
 	}
 }

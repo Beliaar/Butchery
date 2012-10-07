@@ -16,6 +16,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import butchery.api.IButcherable;
+import butchery.api.TubRecipeManager;
 import butchery.common.blocks.Lime;
 import butchery.common.blocks.TileEntityTub;
 import butchery.common.blocks.Tub;
@@ -174,6 +175,9 @@ public class Butchery {
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadSheep));
 
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
+
+		TubRecipeManager.getInstance().addRecipe(new ItemStack(Item.leather),
+				Hide, Limestone, 1, 10, 2400);
 
 		NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
 
