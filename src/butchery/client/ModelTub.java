@@ -45,25 +45,25 @@ public class ModelTub extends ModelBase {
 		Bottom.mirror = true;
 		setRotation(Bottom, 0F, 0F, 0F);
 		Right = new ModelRenderer(this, 0, 18);
-		Right.addBox(0F, 0F, 0F, 16, 11, 2);
+		Right.addBox(0F, 0F, 0F, 16, 12, 2);
 		Right.setRotationPoint(8F, 5F, 21F);
 		Right.setTextureSize(128, 64);
 		Right.mirror = true;
 		setRotation(Right, 0F, 0F, 0F);
 		Left = new ModelRenderer(this, 0, 36);
-		Left.addBox(0F, 0F, 0F, 16, 11, 2);
+		Left.addBox(0F, 0F, 0F, 16, 12, 2);
 		Left.setRotationPoint(8F, 5F, 7F);
 		Left.setTextureSize(128, 64);
 		Left.mirror = true;
 		setRotation(Left, 0F, 0F, 0F);
 		Back = new ModelRenderer(this, 39, 18);
-		Back.addBox(0F, 0F, 0F, 2, 11, 12);
+		Back.addBox(0F, 0F, 0F, 2, 12, 12);
 		Back.setRotationPoint(22F, 5F, 9F);
 		Back.setTextureSize(128, 64);
 		Back.mirror = true;
 		setRotation(Back, 0F, 0F, 0F);
 		Front = new ModelRenderer(this, 71, 18);
-		Front.addBox(0F, 0F, 0F, 2, 11, 12);
+		Front.addBox(0F, 0F, 0F, 2, 12, 12);
 		Front.setRotationPoint(8F, 5F, 9F);
 		Front.setTextureSize(128, 64);
 		Front.mirror = true;
@@ -100,7 +100,7 @@ public class ModelTub extends ModelBase {
 	public void renderWater(TileEntityTub entity, float scale, double x,
 			double y, double z) {
 		if (entity.waterLevel > 0) {
-			Water.setRotationPoint(10F, 5F + (entity.waterLevel / 10), 9F);
+			Water.setRotationPoint(10F, 6.0F + (entity.waterLevel / 10F), 9F);
 			Water.render(scale);
 		}
 
