@@ -17,7 +17,7 @@ public class Limestone extends Item {
 	public Limestone(int item_id) {
 		super(item_id);
 		this.maxStackSize = 64;
-		setTabToDisplayOn(CreativeTabs.tabMaterials);
+		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
 	@Override

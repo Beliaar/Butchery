@@ -84,8 +84,8 @@ public class TileEntityTub extends TileEntity implements IInventory {
 			EntityPlayerMP player = (EntityPlayerMP) player_obj;
 			if (serverWorld.getPlayerManager().isPlayerWatchingChunk(player,
 					par2 >> 4, par4 >> 4)) {
-				player.serverForThisPlayer
-						.sendPacketToPlayer(getAuxillaryInfoPacket());
+				player.playerNetServerHandler
+						.sendPacketToPlayer(getDescriptionPacket());
 			}
 		}
 	}
@@ -138,7 +138,7 @@ public class TileEntityTub extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public Packet getAuxillaryInfoPacket() {
+	public Packet getDescriptionPacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 		return new Packet132TileEntityData(this.xCoord, this.yCoord,

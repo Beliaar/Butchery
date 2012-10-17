@@ -20,7 +20,7 @@ public class DeadPig extends Item implements IButcherable {
 	public DeadPig(int item_id) {
 		super(item_id);
 		this.maxStackSize = 64;
-		setTabToDisplayOn(CreativeTabs.tabMisc);
+		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class Hide extends Item {
 	public Hide(int itemID) {
 		super(itemID);
 		this.maxStackSize = 64;
-		setTabToDisplayOn(CreativeTabs.tabMaterials);
+		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
 	@Override

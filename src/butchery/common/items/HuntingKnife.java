@@ -16,9 +16,9 @@ public class HuntingKnife extends Item {
 
 	public HuntingKnife(int itemID, int maxDamage) {
 		super(itemID);
-		this.setMaxDamage(maxDamage);
+		setMaxDamage(maxDamage);
 		this.maxStackSize = 1;
-		this.setTabToDisplayOn(CreativeTabs.tabTools);
+		setCreativeTab(CreativeTabs.tabTools);
 	}
 
 	@Override

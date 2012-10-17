@@ -20,7 +20,7 @@ public class DeadSheep extends Item implements IButcherable {
 	public DeadSheep(int item_id) {
 		super(item_id);
 		this.maxStackSize = 64;
-		setTabToDisplayOn(CreativeTabs.tabMisc);
+		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	@Override

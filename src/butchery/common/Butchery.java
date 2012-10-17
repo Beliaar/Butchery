@@ -82,32 +82,30 @@ public class Butchery {
 
 		config.load();
 
-		StoneHuntingKnifeID = config.getOrCreateIntProperty(
-				"StoneHuntingKnifeID", Configuration.CATEGORY_ITEM, 6000)
+		StoneHuntingKnifeID = config.get(Configuration.CATEGORY_ITEM,
+				"StoneHuntingKnifeID", 6000).getInt();
+		IronHuntingKnifeID = config.get(Configuration.CATEGORY_ITEM,
+				"IronHuntingKnifeID", 6001).getInt();
+		HuntingKnifeUsesStone = config.get(Configuration.CATEGORY_ITEM,
+				"HuntingKnifeUsesStone", 10).getInt();
+		HuntingKnifeUsesIron = config.get(Configuration.CATEGORY_ITEM,
+				"HuntingKnifeUsesIron", 25).getInt();
+		DeadCowID = config.get(Configuration.CATEGORY_ITEM, "DeadCowID", 6002)
 				.getInt();
-		IronHuntingKnifeID = config.getOrCreateIntProperty(
-				"IronHuntingKnifeID", Configuration.CATEGORY_ITEM, 6001)
+		DeadPigID = config.get(Configuration.CATEGORY_ITEM, "DeadPigID", 6003)
 				.getInt();
-		HuntingKnifeUsesStone = config.getOrCreateIntProperty(
-				"HuntingKnifeUsesStone", Configuration.CATEGORY_ITEM, 10)
+		DeadSheepID = config.get(Configuration.CATEGORY_ITEM, "DeadSheepID",
+				6004).getInt();
+		LimestoneID = config.get(Configuration.CATEGORY_ITEM, "LimestoneID",
+				6005).getInt();
+		LimeID = config.get(Configuration.CATEGORY_BLOCK, "LimeID", 2700)
 				.getInt();
-		HuntingKnifeUsesIron = config.getOrCreateIntProperty(
-				"HuntingKnifeUsesIron", Configuration.CATEGORY_ITEM, 25)
+		TubID = config.get(Configuration.CATEGORY_BLOCK, "TubID", 2701)
 				.getInt();
-		DeadCowID = config.getOrCreateIntProperty("DeadCowID",
-				Configuration.CATEGORY_ITEM, 6002).getInt();
-		DeadPigID = config.getOrCreateIntProperty("DeadPigID",
-				Configuration.CATEGORY_ITEM, 6003).getInt();
-		DeadSheepID = config.getOrCreateIntProperty("DeadSheepID",
-				Configuration.CATEGORY_ITEM, 6004).getInt();
-		LimestoneID = config.getOrCreateIntProperty("LimestoneID",
-				Configuration.CATEGORY_ITEM, 6005).getInt();
-		LimeID = config.getOrCreateBlockIdProperty("LimeID", 2700).getInt();
-		TubID = config.getOrCreateBlockIdProperty("TubID", 2701).getInt();
-		TubItemID = config.getOrCreateIntProperty("TubItemID",
-				Configuration.CATEGORY_ITEM, 6006).getInt();
-		HideID = config.getOrCreateIntProperty("HideID",
-				Configuration.CATEGORY_ITEM, 6007).getInt();
+		TubItemID = config.get(Configuration.CATEGORY_ITEM, "TubItemID", 6006)
+				.getInt();
+		HideID = config.get(Configuration.CATEGORY_ITEM, "HideID", 6007)
+				.getInt();
 		config.save();
 	}
 
@@ -141,7 +139,7 @@ public class Butchery {
 		Tub.setBlockName("Tub");
 		Tub.setHardness(0.5f).setResistance(0.5f);
 		TubItem = new ItemReed(TubItemID, Tub);
-		TubItem.setIconIndex(6).setTabToDisplayOn(CreativeTabs.tabTools);
+		TubItem.setIconIndex(6).setCreativeTab(CreativeTabs.tabTools);
 		TubItem.setItemName("cauldron");
 		TubItem.setTextureFile(CommonProxy.ITEMS_PNG);
 		Hide = new Hide(HideID);
