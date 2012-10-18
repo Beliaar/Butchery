@@ -25,21 +25,25 @@ public class CraftingHandler implements ICraftingHandler {
 	public void onCrafting(EntityPlayer player, ItemStack item,
 			IInventory craftMatrix) {
 		if (item.itemID == Block.planks.blockID) {
+			boolean found_wood = false;
 			for (int i = 0; i < craftMatrix.getSizeInventory(); ++i) {
 				ItemStack stack = craftMatrix.getStackInSlot(i);
 				if (stack != null) {
 					if (stack.itemID == Block.wood.blockID) {
-						ItemStack barkStack = new ItemStack(Butchery.Bark);
-						if (!player.inventory
-								.addItemStackToInventory(barkStack)) {
-							player.dropPlayerItem(barkStack);
-						}
+						found_wood = true;
+						break;
 					}
 				}
 			}
-		} else {
-			butcher(player, item, craftMatrix);
+			if (found_wood) {
+				ItemStack barkStack = new ItemStack(Butchery.Bark);
+				if (!player.inventory.addItemStackToInventory(barkStack)) {
+					player.dropPlayerItem(barkStack);
+				}
+				return;
+			}
 		}
+		butcher(player, item, craftMatrix);
 	}
 
 	/**
