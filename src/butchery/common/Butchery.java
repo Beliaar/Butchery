@@ -192,9 +192,11 @@ public class Butchery {
 
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 
-		TubRecipeManager.getInstance().addRecipe(new ItemStack(Item.leather),
+		TubRecipeManager.getInstance().addRecipe(new ItemStack(LimedHide),
 				Hide, Limestone, 1, 10, 2400);
-
+		TubRecipeManager.getInstance().addRecipe(new ItemStack(Item.leather),
+				LimedHide, Bark, 1, 25, 4800);
+		
 		NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
 
 		proxy.registerRenderers();
