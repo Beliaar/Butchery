@@ -8,13 +8,15 @@
  */
 package butchery.common.crafting;
 
-import butchery.api.IButcherable;
-import butchery.common.items.HuntingKnife;
 import net.minecraft.src.AchievementList;
+import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import butchery.api.IButcherable;
+import butchery.common.Butchery;
+import butchery.common.items.HuntingKnife;
 import cpw.mods.fml.common.ICraftingHandler;
 
 public class CraftingHandler implements ICraftingHandler {
@@ -22,7 +24,22 @@ public class CraftingHandler implements ICraftingHandler {
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item,
 			IInventory craftMatrix) {
-		butcher(player, item, craftMatrix);
+		if (item.itemID == Block.planks.blockID) {
+			for (int i = 0; i < craftMatrix.getSizeInventory(); ++i) {
+				ItemStack stack = craftMatrix.getStackInSlot(i);
+				if (stack != null) {
+					if (stack.itemID == Block.wood.blockID) {
+						ItemStack barkStack = new ItemStack(Butchery.Bark);
+						if (!player.inventory
+								.addItemStackToInventory(barkStack)) {
+							player.dropPlayerItem(barkStack);
+						}
+					}
+				}
+			}
+		} else {
+			butcher(player, item, craftMatrix);
+		}
 	}
 
 	/**

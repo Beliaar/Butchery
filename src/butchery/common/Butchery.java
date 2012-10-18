@@ -23,6 +23,7 @@ import butchery.common.blocks.Tub;
 import butchery.common.crafting.ButcherRecipe;
 import butchery.common.crafting.CraftingHandler;
 import butchery.common.gui.GuiHandler;
+import butchery.common.items.Bark;
 import butchery.common.items.DeadCow;
 import butchery.common.items.DeadPig;
 import butchery.common.items.DeadSheep;
@@ -63,6 +64,7 @@ public class Butchery {
 	int TubID;
 	int TubItemID;
 	int HideID;
+	int BarkID;
 
 	public static Item StoneHuntingKnife;
 	public static Item IronHuntingKnife;
@@ -72,6 +74,7 @@ public class Butchery {
 	public static Item Limestone;
 	public static Item TubItem;
 	public static Item Hide;
+	public static Item Bark;
 	public static Block Lime;
 	public static Block Tub;
 
@@ -105,6 +108,8 @@ public class Butchery {
 		TubItemID = config.get(Configuration.CATEGORY_ITEM, "TubItemID", 6006)
 				.getInt();
 		HideID = config.get(Configuration.CATEGORY_ITEM, "HideID", 6007)
+				.getInt();
+		BarkID = config.get(Configuration.CATEGORY_ITEM, "BarkID", 6008)
 				.getInt();
 		config.save();
 	}
@@ -145,6 +150,9 @@ public class Butchery {
 		Hide = new Hide(HideID);
 		Hide.setIconIndex(7);
 		Hide.setItemName("Hide");
+		Bark = new Bark(BarkID);
+		Bark.setIconIndex(9);
+		Bark.setItemName("Bark");
 
 		GameRegistry.registerBlock(Lime);
 		GameRegistry.registerBlock(Tub);
@@ -159,6 +167,7 @@ public class Butchery {
 		LanguageRegistry.addName(Lime, "Lime");
 		LanguageRegistry.addName(TubItem, "Tub");
 		LanguageRegistry.addName(Hide, "Hide");
+		LanguageRegistry.addName(Bark, "Bark");
 
 		GameRegistry.addRecipe(new ItemStack(StoneHuntingKnife, 1),
 				new Object[] { "F", "S", 'F', Item.flint, 'S', Item.stick });
