@@ -14,6 +14,7 @@ import net.minecraft.src.IRecipe;
 import net.minecraft.src.InventoryCrafting;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 
 /**
  * The recipe for butchering with the HuntingKnife
@@ -32,7 +33,7 @@ public class ButcherRecipe implements IRecipe {
 	}
 
 	@Override
-	public boolean matches(InventoryCrafting var1) {
+	public boolean matches(InventoryCrafting var1, World var2) {
 		boolean foundKnife = false;
 		boolean foundItem = false;
 		int itemsfound = 0;

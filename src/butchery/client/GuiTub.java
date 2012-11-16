@@ -34,7 +34,7 @@ public class GuiTub extends GuiContainer {
 	}
 
 	@Override
-	protected void drawGuiContainerForegroundLayer() {
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		// draw text and stuff here
 		// the parameters for drawString are: string, x, y, color
 		fontRenderer.drawString("Tub", 8, 6, 4210752);

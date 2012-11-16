@@ -15,7 +15,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
-import net.minecraft.src.NetworkManager;
+import net.minecraft.src.INetworkManager;
 import net.minecraft.src.Packet;
 import net.minecraft.src.Packet132TileEntityData;
 import net.minecraft.src.TileEntity;
@@ -146,7 +146,7 @@ public class TileEntityTub extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, Packet132TileEntityData packet) {
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData packet) {
 		NBTTagCompound tag = packet.customParam1;
 		this.waterLevel = tag.getInteger("waterLevel");
 		this.soakProgress = tag.getFloat("soakProgress");
