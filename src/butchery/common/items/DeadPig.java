@@ -8,12 +8,12 @@
  */
 package butchery.common.items;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import butchery.api.IButcherable;
 import butchery.common.Butchery;
 import butchery.common.CommonProxy;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
 
 public class DeadPig extends Item implements IButcherable {
 

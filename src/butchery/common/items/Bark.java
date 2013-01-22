@@ -8,9 +8,9 @@
  */
 package butchery.common.items;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import butchery.common.CommonProxy;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
 
 public class Bark extends Item {
 

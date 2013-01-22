@@ -8,7 +8,7 @@
  */
 package butchery.api;
 
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.ItemStack;
 
 /**
  * Interface for items that can be butchered with the Hunting Knife.

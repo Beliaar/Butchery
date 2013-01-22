@@ -8,17 +8,14 @@
  */
 package butchery.client;
 
-import java.util.logging.Level;
-
-import net.minecraft.src.TextureWaterFX;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
 
 import butchery.common.blocks.TileEntityTub;
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TubRenderer extends TileEntitySpecialRenderer {

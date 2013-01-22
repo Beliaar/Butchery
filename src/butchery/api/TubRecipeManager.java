@@ -11,9 +11,7 @@ package butchery.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.ItemStack;
 
 public class TubRecipeManager {
 

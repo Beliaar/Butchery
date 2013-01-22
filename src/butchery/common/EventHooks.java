@@ -8,11 +8,11 @@
  */
 package butchery.common;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityCow;
-import net.minecraft.src.EntityPig;
-import net.minecraft.src.EntitySheep;
-import net.minecraft.src.ItemStack;
+import net.minecraft.block.Block;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
@@ -32,7 +32,7 @@ public class EventHooks {
 			if (event.entityLiving.isBurning())
 				return;
 			event.drops.clear();
-			event.entityLiving.dropItem(Butchery.DeadCow.shiftedIndex, 1);
+			event.entityLiving.dropItem(Butchery.DeadCow.itemID, 1);
 		} else if (event.entityLiving.getClass() == EntitySheep.class) {
 			if (event.entityLiving.isBurning())
 				return;
@@ -42,12 +42,12 @@ public class EventHooks {
 				sheep.entityDropItem(new ItemStack(Block.cloth.blockID, 1,
 						sheep.getFleeceColor()), 0.0F);
 			}
-			event.entityLiving.dropItem(Butchery.DeadSheep.shiftedIndex, 1);
+			event.entityLiving.dropItem(Butchery.DeadSheep.itemID, 1);
 		} else if (event.entityLiving.getClass() == EntityPig.class) {
 			if (event.entityLiving.isBurning())
 				return;
 			event.drops.clear();
-			event.entityLiving.dropItem(Butchery.DeadPig.shiftedIndex, 1);
+			event.entityLiving.dropItem(Butchery.DeadPig.itemID, 1);
 		}
 	}
 }

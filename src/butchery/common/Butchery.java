@@ -8,13 +8,17 @@
  */
 package butchery.common;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemReed;
-import net.minecraft.src.ItemStack;
+import java.util.List;
+
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemReed;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import butchery.api.IButcherable;
 import butchery.api.TubRecipeManager;
 import butchery.common.blocks.Lime;
@@ -161,7 +165,7 @@ public class Butchery {
 		LimedHide = new LimedHide(LimedHideID);
 		LimedHide.setIconIndex(8);
 		LimedHide.setItemName("LimedHide");
-		
+
 		GameRegistry.registerBlock(Lime);
 		GameRegistry.registerBlock(Tub);
 		GameRegistry.registerTileEntity(TileEntityTub.class, "Tub");
@@ -190,13 +194,36 @@ public class Butchery {
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadPig));
 		GameRegistry.addRecipe(new ButcherRecipe((IButcherable) DeadSheep));
 
+		List recipes = CraftingManager.getInstance().getRecipeList();
+		Object[] swdItems = new ItemStack[3];
+		swdItems[0] = new ItemStack(Item.ingotIron);
+		swdItems[1] = new ItemStack(Item.ingotIron);
+		swdItems[2] = new ItemStack(Item.stick);
+		ShapedOreRecipe swdRecipe = new ShapedOreRecipe(new ItemStack(
+				Item.swordSteel), "x", "x", "#", 'x', Item.ingotIron, '#',
+				Item.stick);
+
+		int index = 0;
+		index = recipes.indexOf(swdRecipe);
+
+		for (Object recipeobj : recipes) {
+			if (!(recipeobj instanceof ShapedOreRecipe)) {
+				continue;
+			}
+			ShapedOreRecipe recipe = (ShapedOreRecipe) recipeobj;
+			ItemStack swordStack = new ItemStack(Item.swordSteel);
+			if (recipe.getRecipeOutput().itemID == swordStack.itemID) {
+				index = recipes.indexOf(recipe);
+			}
+		}
+
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 
 		TubRecipeManager.getInstance().addRecipe(new ItemStack(LimedHide),
 				Hide, Limestone, 1, 10, 2400);
 		TubRecipeManager.getInstance().addRecipe(new ItemStack(Item.leather),
 				LimedHide, Bark, 1, 25, 4800);
-		
+
 		NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
 
 		proxy.registerRenderers();

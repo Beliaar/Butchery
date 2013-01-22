@@ -10,15 +10,15 @@ package butchery.common.blocks;
 
 import java.util.Random;
 
-import net.minecraft.src.BlockContainer;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import butchery.common.Butchery;
 
 public class Tub extends BlockContainer {
@@ -118,8 +118,7 @@ public class Tub extends BlockContainer {
 						item.getItemDamage()));
 
 				if (item.hasTagCompound()) {
-					entityItem.item.setTagCompound((NBTTagCompound) item
-							.getTagCompound().copy());
+					entityItem.readFromNBT(item.getTagCompound());
 				}
 
 				float factor = 0.05F;
@@ -140,12 +139,12 @@ public class Tub extends BlockContainer {
 
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
-		return Butchery.TubItem.shiftedIndex;
+		return Butchery.TubItem.itemID;
 	}
 	
 	@Override
 	public int idPicked(World par1World, int par2, int par3, int par4) {
-		return Butchery.TubItem.shiftedIndex;		
+		return Butchery.TubItem.itemID;		
 	}
 
 }

@@ -8,12 +8,12 @@
  */
 package butchery.common.crafting;
 
-import net.minecraft.src.AchievementList;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.AchievementList;
 import butchery.api.IButcherable;
 import butchery.common.Butchery;
 import butchery.common.items.HuntingKnife;
@@ -57,7 +57,7 @@ public class CraftingHandler implements ICraftingHandler {
 	 */
 	private void butcher(EntityPlayer player, ItemStack item,
 			IInventory craftMatrix) {
-		if (item.itemID == Item.leather.shiftedIndex) {
+		if (item.itemID == Item.leather.itemID) {
 			player.addStat(AchievementList.killCow, 1);
 		}
 		ItemStack knife = null;

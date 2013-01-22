@@ -8,23 +8,23 @@
  */
 package butchery.common.blocks;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagList;
-import net.minecraft.src.INetworkManager;
-import net.minecraft.src.Packet;
-import net.minecraft.src.Packet132TileEntityData;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldServer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import butchery.api.TubRecipe;
 import butchery.api.TubRecipeManager;
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityTub extends TileEntity implements IInventory {
 
@@ -45,7 +45,7 @@ public class TileEntityTub extends TileEntity implements IInventory {
 		if (world.isRemote) {
 			return true;
 		}
-		if (currentItem.itemID == Item.bucketWater.shiftedIndex) {
+		if (currentItem.itemID == Item.bucketWater.itemID) {
 			if (this.waterLevel < 100) {
 				if (!player.capabilities.isCreativeMode) {
 					player.inventory.setInventorySlotContents(

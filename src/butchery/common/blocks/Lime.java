@@ -10,13 +10,12 @@ package butchery.common.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.World;
 import butchery.common.Butchery;
 import butchery.common.CommonProxy;
-
-import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Material;
-import net.minecraft.src.World;
 
 public class Lime extends Block {
 
@@ -32,7 +31,7 @@ public class Lime extends Block {
 
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
-		return Butchery.Limestone.shiftedIndex;
+		return Butchery.Limestone.itemID;
 	}
 
 	@Override

@@ -8,13 +8,12 @@
  */
 package butchery.common.crafting;
 
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.World;
 import butchery.api.IButcherable;
 import butchery.common.Butchery;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.InventoryCrafting;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
 
 /**
  * The recipe for butchering with the HuntingKnife
@@ -41,8 +40,8 @@ public class ButcherRecipe implements IRecipe {
 			ItemStack stack = var1.getStackInSlot(i);
 			if (stack != null) {
 				++itemsfound;
-				if (stack.itemID == Butchery.StoneHuntingKnife.shiftedIndex
-						|| stack.itemID == Butchery.IronHuntingKnife.shiftedIndex) {
+				if (stack.itemID == Butchery.StoneHuntingKnife.itemID
+						|| stack.itemID == Butchery.IronHuntingKnife.itemID) {
 					foundKnife = true;
 				}
 				if (stack.getItem().getClass() == this.butcherable.getClass()) {

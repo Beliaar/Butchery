@@ -12,12 +12,10 @@
 
 package butchery.client;
 
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
 import butchery.common.blocks.TileEntityTub;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.Entity;
-import net.minecraft.src.ModelBase;
-import net.minecraft.src.ModelRenderer;
-import net.minecraft.src.Tessellator;
 
 /**
  * The model for the tub
